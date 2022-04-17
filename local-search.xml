@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>Ultrasoun-Emit-Delay</title>
+    <link href="/2022/04/17/Ultrasoun-Emit-Delay/"/>
+    <url>/2022/04/17/Ultrasoun-Emit-Delay/</url>
+    
+    <content type="html"><![CDATA[<h1 id="超声成像发射声场（Ultrasound-Emit-Field）"><a href="#超声成像发射声场（Ultrasound-Emit-Field）" class="headerlink" title="超声成像发射声场（Ultrasound Emit Field）"></a>超声成像发射声场（Ultrasound Emit Field）</h1><p>​       根据超声波阵面的实现方式可以将超声成像分为平面波（plane wave）成像、扩散波（diverging wave）成像、聚焦（focus）成像。为了实现上述成像方式需要施加不同的发射延时形成相应的波阵面。不同的波阵面形成的发射声场表现不同，了解不同成像方式的声场有助于我们加深超声成像的了解。</p><p>​       此处以Field II软件仿真不同成像方式发射声场。发射延时可以使用Filed II自带函数生成，由于实际工程需要发射延时是由工程师去计算配置的，下文列出了发射延时的计算方式。</p><p>​       Field_II是丹麦超声专家J. A. Jensen等利用声学原理设计的一个超声系统。它可以仿真超声探头所形成的声场和超声图像等。这里默认已经对Filed _II有一定了解。</p><h2 id="一、平面波发射声场"><a href="#一、平面波发射声场" class="headerlink" title="一、平面波发射声场"></a>一、平面波发射声场</h2><h3 id="1、线阵探头-x2F-相控阵探头"><a href="#1、线阵探头-x2F-相控阵探头" class="headerlink" title="1、线阵探头&#x2F;相控阵探头"></a>1、线阵探头&#x2F;相控阵探头</h3><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_Emit_Field/plane_wave.png" style="zoom:50%;" /><p>​     上图是线阵&#x2F;相控阵平面波正常发射和偏转发射的示意图，对于平面波没有聚焦的概念，因此只要使激励阵元的延时形成平面波就可以。</p><p>​     对于正常发射各阵元发射延时全为0，对于偏转发射（包括正常发射）延时计算为：<br>$$<br>x⋅sin(v)<br>$$<br>​     角度为负往左偏转，角度为正往右偏转，对于以后的扫描偏转方向沿用这一规则。</p><p>​当计算完成发射延时，就可以进行声场仿真。</p><p>​首先需要对配置探头参数进行配置，参数如下：</p><figure class="highlight matlab"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><pre><code class="hljs matlab">clear all<br>close all<br>clc<br>plt = <span class="hljs-number">1</span>;<span class="hljs-comment">%是否绘制</span><br>f0 = <span class="hljs-number">7500000</span>;<br>N_elements = <span class="hljs-number">128</span>;<br>width = <span class="hljs-number">0.17e-3</span>;<br>height = <span class="hljs-number">5e-3</span>;<br>kerf = <span class="hljs-number">0.03e-3</span>;<br>focus = <span class="hljs-number">20e-3</span>;<br>fs = <span class="hljs-number">200e6</span>;<br>Th = xdc_linear_array (N_elements, width, height, kerf, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>,[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,focus]);<br>Rh = xdc_linear_array (N_elements, width, height, kerf, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>,[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,focus]);<br><span class="hljs-keyword">if</span> plt<br>probeplt(Th);<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_Emit_Field/line_probe.png"></p><p>​设置脉冲相应、阵元位置及平面波发射角度</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
