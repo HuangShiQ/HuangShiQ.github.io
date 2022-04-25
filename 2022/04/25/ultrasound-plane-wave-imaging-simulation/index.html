@@ -18,7 +18,7 @@
   
     <meta name="description" content="超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）​        与传统超声聚焦成像相比，平面波成像通过一次发射可以获取整个感兴趣区域图像信息，帧率&gt;1000Hz以上，但由于无聚焦，图像对比度和分辨率降低。为了克服这一限制，可以通过发射N个不同角度的平面波，通过相干叠加得到完整图像，在一定的角度范围内，平面波数量越多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ultrasound_plane_wave_imaging_simulation">
+<meta property="og:title" content="超声平面波成像仿真（ultrasound plane_wave imaging simulation）">
 <meta property="og:url" content="https://huangshiq.github.io/2022/04/25/ultrasound-plane-wave-imaging-simulation/index.html">
 <meta property="og:site_name" content="MyDiary">
 <meta property="og:description" content="超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）​        与传统超声聚焦成像相比，平面波成像通过一次发射可以获取整个感兴趣区域图像信息，帧率&gt;1000Hz以上，但由于无聚焦，图像对比度和分辨率降低。为了克服这一限制，可以通过发射N个不同角度的平面波，通过相干叠加得到完整图像，在一定的角度范围内，平面波数量越多">
@@ -31,13 +31,13 @@
 <meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_plane_wave_3.png">
 <meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_plane_wave_15.png">
 <meta property="article:published_time" content="2022-04-25T12:41:51.000Z">
-<meta property="article:modified_time" content="2022-04-25T12:42:52.776Z">
+<meta property="article:modified_time" content="2022-04-25T12:45:34.451Z">
 <meta property="article:author" content="Harris">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_waveplane_waveConventional-focused-and-ultrafast-ultrasound-imaging-sequences-for-a-typical-medical.png">
   
   
-  <title>ultrasound_plane_wave_imaging_simulation - MyDiary</title>
+  <title>超声平面波成像仿真（ultrasound plane_wave imaging simulation） - MyDiary</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -183,7 +183,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 1)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ultrasound_plane_wave_imaging_simulation">
+            <span class="h2" id="subtitle" title="超声平面波成像仿真（ultrasound plane_wave imaging simulation）">
               
             </span>
 
@@ -250,12 +250,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ultrasound_plane_wave_imaging_simulation</h1>
+            <h1 style="display: none">超声平面波成像仿真（ultrasound plane_wave imaging simulation）</h1>
             
             <div class="markdown-body">
               <h1 id="超声平面波复合成像仿真（ultrasound-plane-wave-compound-imaging-simulation）"><a href="#超声平面波复合成像仿真（ultrasound-plane-wave-compound-imaging-simulation）" class="headerlink" title="超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）"></a>超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）</h1><p>​        与传统超声聚焦成像相比，平面波成像通过一次发射可以获取整个感兴趣区域图像信息，帧率&gt;1000Hz以上，但由于无聚焦，图像对比度和分辨率降低。为了克服这一限制，可以通过发射N个不同角度的平面波，通过相干叠加得到完整图像，在一定的角度范围内，平面波数量越多，图像质量越好。</p>
-<img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_waveplane_waveConventional-focused-and-ultrafast-ultrasound-imaging-sequences-for-a-typical-medical.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />
-
+<p>​                                            <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_waveplane_waveConventional-focused-and-ultrafast-ultrasound-imaging-sequences-for-a-typical-medical.png" srcset="/img/loading.gif" lazyload style="zoom:50%;" />     </p>
 <p>​		 图像来自<a target="_blank" rel="noopener" href="https://pubmed.ncbi.nlm.nih.gov/24402899/">Ultrafast imaging in biomedical ultrasound</a></p>
 <p>​    	上图是传统聚焦成像与平面波复合成像示意图们可以明显看出平面波的优缺点。</p>
 <p>​        本文通过Filed II对线阵和凸阵进行平面波复合成像仿真，通过发射延时控制平面波的形成，对于发射延时的计算可以看上节<a target="_blank" rel="noopener" href="https://blog.csdn.net/h79847164/article/details/124286203">超声成像发射声场仿真（Ultrasound Emit Field Simulation）</a>。</p>
@@ -268,8 +267,7 @@
 <li>图像显示</li>
 </ol>
 <p>在线阵中会对上述部分进行说明，凸阵设置基本一样</p>
-<h2 id="一-线阵平面波复合成像（plane-wave-compound-of-linear-array）"><a href="#一-线阵平面波复合成像（plane-wave-compound-of-linear-array）" class="headerlink" title="一 线阵平面波复合成像（plane-wave compound of linear array）"></a>一 线阵平面波复合成像（plane-wave compound of linear array）</h2><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavePlaneWave_Demo1.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
-
+<h2 id="一-线阵平面波复合成像（plane-wave-compound-of-linear-array）"><a href="#一-线阵平面波复合成像（plane-wave-compound-of-linear-array）" class="headerlink" title="一 线阵平面波复合成像（plane-wave compound of linear array）"></a>一 线阵平面波复合成像（plane-wave compound of linear array）</h2><p>​                                                   <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavePlaneWave_Demo1.png" srcset="/img/loading.gif" lazyload style="zoom:80%;"   />  </p>
 <p>波束合成中的延时由上图中的两部分构成发射延时$Txdelay$和接收延时$Rvdelay$，在仿真过程中需要减去数据采样起始时间$stime$，在实际工程中$stime$可以代表波束合成参数准备时间、声束在透镜中传播时间、校正发射脉冲产生时间等，具体根据工程实现的方式去计算。对于延时时间最终转化为：<br>$$<br>delay &#x3D;Txdelay+Rvdelay-stime<br>$$<br>在Field II中$stime$由下面的函数返回</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-string">[scat, stime]</span> = calc_scat_multi (Th1, Th2, points, amplitudes); <br></code></pre></td></tr></table></figure>
 
@@ -301,8 +299,7 @@
 <p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_plane_wave_15.png" srcset="/img/loading.gif" lazyload></p>
 <p>从仿真效果上看15个角度旁瓣少，主瓣窄，提高平面波发射角度数量可以有效提升图像的分辨率和信噪比。</p>
 <h2 id="二-凸阵平面波复合成像（plane-wave-compound-of-curve-array）"><a href="#二-凸阵平面波复合成像（plane-wave-compound-of-curve-array）" class="headerlink" title="二 凸阵平面波复合成像（plane-wave compound of curve array）"></a>二 凸阵平面波复合成像（plane-wave compound of curve array）</h2><p>​        仿真流程与线阵一样，不同地方在于发射延时计算方式与线阵不一样，波束合成中延时的距离计算需要由极坐标系转化为笛卡尔坐标系，坐标系转化后应该如下图：</p>
-<img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_array_xy.bmp" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
-
+<p>​                                                <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_array_xy.bmp" srcset="/img/loading.gif" lazyload style="zoom:67%;" />             </p>
 <p>​       按照线阵的流程配置，最终结果为：</p>
 <p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_plane_wave_3.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_plane_wave_15.png" srcset="/img/loading.gif" lazyload></p>
