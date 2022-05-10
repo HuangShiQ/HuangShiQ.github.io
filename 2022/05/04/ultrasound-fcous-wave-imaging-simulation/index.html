@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Harris">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）​        上篇文章超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）使用Field II仿真了平面波成像，相比平面波成，聚焦成像像在焦区处分辨率、信噪比更强、通过聚焦穿透力也有提升，平面波发射一次获取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超声聚焦成像仿真（ultrasound fcous imaging simulation）">
+<meta property="og:url" content="https://huangshiq.github.io/2022/05/04/ultrasound-fcous-wave-imaging-simulation/index.html">
+<meta property="og:site_name" content="MyDiary">
+<meta property="og:description" content="超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）​        上篇文章超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）使用Field II仿真了平面波成像，相比平面波成，聚焦成像像在焦区处分辨率、信噪比更强、通过聚焦穿透力也有提升，平面波发射一次获取">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huangshiq.github.io/img/Ultrasound/3.png">
+<meta property="article:published_time" content="2022-05-04T03:10:56.000Z">
+<meta property="article:modified_time" content="2022-05-10T14:32:40.792Z">
+<meta property="article:author" content="Harris">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://huangshiq.github.io/img/Ultrasound/3.png">
+  
+  
+  <title>超声聚焦成像仿真（ultrasound fcous imaging simulation） - MyDiary</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"huangshiq.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"WDxNJD4Sp2EU0HRpw714b2SA-gzGzoHsz","app_key":"QPAIhElalhua4SUp4ld0myf9","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>My Diary</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wild.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 1)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="超声聚焦成像仿真（ultrasound fcous imaging simulation）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-04 11:10" pubdate>
+        2022年5月4日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      51 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">超声聚焦成像仿真（ultrasound fcous imaging simulation）</h1>
+            
+            <div class="markdown-body">
+              <h1 id="超声B-mode聚焦成像仿真（ultrasound-B-mode-fcous-imaging-simulation）"><a href="#超声B-mode聚焦成像仿真（ultrasound-B-mode-fcous-imaging-simulation）" class="headerlink" title="超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）"></a>超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）</h1><p>​        上篇文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/h79847164/article/details/124414103?spm=1001.2014.3001.5501">超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）</a>使用Field II仿真了平面波成像，相比平面波成，聚焦成像像在焦区处分辨率、信噪比更强、通过聚焦穿透力也有提升，平面波发射一次获取整个深度信息，发射聚焦需要对每一条线上进行聚焦，然后做波束合成获取一条线上的信息，需要发射N次，帧率比平面波慢。</p>
+<p>​        在仿真之前先介绍一下聚焦成像，通过对发射和接收的信号进行延时叠加求和（delay and sum ,DAS）可以达到聚焦成像的目的，聚焦成像中的波束合成包含两种模式，发射聚焦及接收聚焦。</p>
+<p>​        理想上希望对每一个深度上的点进行发射聚焦即发射动态聚焦，由于声波传播需要时间，一副图像的形成包含N*M个点，需要上万次发射，无法实时成像，而实时成像又是我们超声成像（相比CT、MRI成像）最重要的优势，因此发射聚焦往往只在感兴趣区域进行1~3次，超过一个发射焦点就叫多焦点成像。对于有些厂家宣传的十几个以上的焦点只是为了满足招标要求去做的，临床上很少甚至不会使用。</p>
+<p>​        根据互易定理，接收聚焦与发射聚焦的原理是一样的，都是通过对信号进行延时达到聚焦目的。对每一个深度上的点进行聚焦称为接收动态聚焦。如果只对一个感兴趣深度做接收聚焦就叫做接收定点聚焦，目前商业机器上使用的大多是接收动态聚焦。</p>
+<p>​       下图是一副大家经常看到的波束合成的示意图</p>
+<p>​                                                                           <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_waveDynamic-receive-beamforming-for-US-imaging.png" srcset="/img/loading.gif" lazyload>                           </p>
+<p>​       从图上可以看出发射延时控制各阵元发出的波束同时到达聚焦点$(x,z)$，对接收到的回波信号通过计算接收延时进行接收聚焦，获取波束合成信号。</p>
+<p>​        本文仿真的是定点发射聚焦，发射聚焦通过发射延时控制，当然也可以通过Field II自带函数去计算，感兴趣的话可以看下<a target="_blank" rel="noopener" href="https://blog.csdn.net/h79847164/article/details/124286203">超声成像发射声场仿真（Ultrasound Emit Field Simulation）</a>，这篇文章介绍了通过控制发射延时形成不同成像模式的发射声场；对于动态接收聚焦可以通过Field II自带函数去计算，为了更深刻了解波束合成过程，这里使用仿真代码去实现。在此处的仿真中仅仿真正常发射图像，对于偏转仿真仅提供结果以验证结果是否正确，因为偏转图像需要另一种技术空间复合（<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0887217101900186">spatial compound imaging</a>），这里不做过多介绍。</p>
+<p>​      与平面波成像仿真一样， 本文仅对聚焦波束合成进行仿真，不涉及额外处理，如发射变迹、接收变迹等。仿真工具使用 Filed II，探头包括线阵、凸阵、相控阵。</p>
+<p> Field II仿真包含四个部分，</p>
+<ol>
+<li>参数配置</li>
+<li>AD数据获取</li>
+<li>波束合成</li>
+<li>图像显示</li>
+</ol>
+<p>在线阵中会通过代码对上述部分进行说明，凸阵、相控阵设置基本一样</p>
+<h2 id="一-线阵聚焦成像（fcous-imaging-of-linear-array）"><a href="#一-线阵聚焦成像（fcous-imaging-of-linear-array）" class="headerlink" title="一 线阵聚焦成像（fcous imaging of linear array）"></a>一 线阵聚焦成像（fcous imaging of linear array）</h2><p>​                                                                                              <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_zhengchangfashe.bmp" srcset="/img/loading.gif" lazyload>                    </p>
+<p>​                         </p>
+<p>上图为线阵非偏转发射延时计算，波束合成中的延时由上图中的两部分构成发射延时$Txdelay$和接收延时$Rvdelay$，在仿真过程中需要减去数据采样起始时间$stime$，在实际工程中$stime$可以代表波束合成参数准备时间、声束在透镜中传播时间、校正发射脉冲产生时间等，具体根据工程实现的方式去计算。对于延时时间最终转化为：<br>$$<br>delay &#x3D;Txdelay+Rxdelay-stime<br>$$<br>在Field II中$stime$由下面的函数返回</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-string">[scat, stime]</span> = calc_scat_multi (Th, Rh, points, amplitudes); <br></code></pre></td></tr></table></figure>
+
+<p>$$<br>Txdelay &#x3D; (sqrt((x_n-x_line)^2+(z_n-z_line^2))&#x2F;c &#x3D;  z_n&#x2F;c<br>$$</p>
+<p>$$<br>Rxdelay &#x3D; (sqrt((x_n-x)^2+(z_n-z)^2))&#x2F;c<br>$$</p>
+<p>上述即延时计算公式，$c$为声速，$(x_n,y_n)$为接收线位置，$(x,z)$为阵元坐标位置。</p>
+<p>Field II仿真代码：</p>
+<ol>
+<li><p>参数设置</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">%1、线阵、相控阵、凸阵支持plane_wave \diverging_wave\fcous_wave</span><br><span class="hljs-comment">%2、相控阵聚焦不做偏转</span><br>clear all<br>clc<br>close all<br><br>wavetype = <span class="hljs-string">&#x27;fcous_wave&#x27;</span> ;<span class="hljs-comment">%plane_wave \diverging_wave\fcous_wave</span><br><span class="hljs-comment">%初始化</span><br>field_init(<span class="hljs-number">0</span>)<br><span class="hljs-comment">%探头参数</span><br>probe.<span class="hljs-built_in">type</span> = <span class="hljs-string">&#x27;linear&#x27;</span>;<br>c = <span class="hljs-number">1540</span>;<br>ch =<span class="hljs-number">128</span>; <span class="hljs-comment">%机器 128通道</span><br>N_active = <span class="hljs-number">64</span>;<span class="hljs-comment">%机器 发射孔径64，接收孔径128</span><br>use_fieldii = <span class="hljs-number">1</span>;  <span class="hljs-comment">%0:自行计算发射延时，1，调用field_ii函数计算发射延时</span><br><br>f0 = <span class="hljs-number">7500000</span>;<br>N_elements = <span class="hljs-number">128</span>;<br>width = <span class="hljs-number">0.17e-3</span>;<br>height = <span class="hljs-number">5e-3</span>;<br>kerf = <span class="hljs-number">0.03e-3</span>;<br>pitch = width+kerf;<br>focus = <span class="hljs-number">20e-3</span>;<br>fs = <span class="hljs-number">100e6</span>;                    <span class="hljs-comment">%不要设置太大</span><br>Th = xdc_linear_array (N_elements, width, height, kerf, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>,[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,focus]);<br>Rh = xdc_linear_array (N_elements, width, height, kerf, <span class="hljs-number">1</span>, <span class="hljs-number">10</span>,[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,focus]);<br><br><br><span class="hljs-comment">%设置2个周期高斯脉冲相应、1个周期激励脉冲</span><br>dt  = <span class="hljs-number">1</span>/fs;<br>t0 = (<span class="hljs-number">-1</span>/f0): dt:(<span class="hljs-number">1</span>/f0);<br>impulse_response = gauspuls(t0, f0);<br>impulse_response = impulse_response-<span class="hljs-built_in">mean</span>(impulse_response);<br>pulse_duration = <span class="hljs-number">1</span>;<br>te = <span class="hljs-number">0</span>:dt:pulse_duration/f0;<br>excitation = square(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*f0*te);<br><span class="hljs-comment">%设置激励脉冲</span><br>xdc_excitation (Th, excitation);<br><span class="hljs-comment">%设置脉冲相应</span><br>xdc_impulse (Th, impulse_response);<br>xdc_impulse (Rh, impulse_response);<br><br><span class="hljs-comment">%阵元参数</span><br>x_ele = ([<span class="hljs-number">0</span>:N_elements<span class="hljs-number">-1</span>]-(N_elements<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>).*pitch;<br>z_ele  = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,<span class="hljs-built_in">length</span>(x_ele));<br>probe.N_elements = N_elements;<br>probe.pitch = pitch;<br><br><span class="hljs-comment">%聚焦位置设置</span><br>fcous_depth = <span class="hljs-number">3e-2</span>;<br><br><span class="hljs-comment">%发射线数量emit_line、位置emit_loc、索引emit_idx</span><br>emit_line = <span class="hljs-number">96</span>;<br>imag_width=  x_ele(<span class="hljs-keyword">end</span>)-x_ele(<span class="hljs-number">1</span>) ;<br>d_x = imag_width/(emit_line<span class="hljs-number">-1</span>);<br>emit_loc= -imag_width/<span class="hljs-number">2</span> +[<span class="hljs-number">0</span>:emit_line<span class="hljs-number">-1</span>]*d_x;<br>emit_idx = <span class="hljs-built_in">floor</span>(([<span class="hljs-number">0</span>:emit_line<span class="hljs-number">-1</span>]*d_x)/pitch+<span class="hljs-number">1</span>);<br>d_y = c/fs/<span class="hljs-number">2</span>;<br>scan.dx = d_x;<br>scan.dy = d_y;<br><br><span class="hljs-comment">%仿体设置</span><br>point_position(<span class="hljs-number">1</span>,:) = [<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10e-3</span>];<br>point_position(<span class="hljs-number">2</span>,:) = [<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">30e-3</span>];<br>point_position(<span class="hljs-number">3</span>,:) = [<span class="hljs-number">-5e-3</span> <span class="hljs-number">0</span> <span class="hljs-number">30e-3</span>];<br>point_position(<span class="hljs-number">4</span>,:) = [<span class="hljs-number">5e-3</span> <span class="hljs-number">0</span> <span class="hljs-number">30e-3</span>];<br>point_position(<span class="hljs-number">5</span>,:) = [<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">40e-3</span>];<br><br>point_amplitudes = <span class="hljs-built_in">ones</span>(<span class="hljs-built_in">size</span>(point_position,<span class="hljs-number">1</span>),<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>AD数据获取</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-comment">% 获取AD数据</span><br>ADInfo.data =<span class="hljs-built_in">zeros</span>(<span class="hljs-built_in">round</span>(<span class="hljs-number">2</span>*<span class="hljs-number">60e-3</span>/c/dt),N_elements,emit_line);<br><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">1</span>:emit_line<br>    <br>    <span class="hljs-comment">%实际工程中发射变迹通过发射波形去控制，以后再实施，这里不做发射变迹</span><br>    <span class="hljs-comment">% 这里的作用是通过变迹控制发射孔径位置</span><br>    apo_vector = <span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,ch);<br>    N_pre  = <span class="hljs-built_in">round</span>(emit_loc(<span class="hljs-built_in">j</span>)/pitch + N_elements/<span class="hljs-number">2</span> - N_active/<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">if</span>(N_pre&lt;<span class="hljs-number">0</span>)<br>        N_post = N_active - <span class="hljs-built_in">abs</span>(N_pre);<br>        N_rem = N_elements-N_post;<br>        apo_vector(<span class="hljs-number">1</span>:N_post) = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">else</span><br>        N_post = N_pre+<span class="hljs-number">63</span>;<br>        <span class="hljs-keyword">if</span>(N_post&gt;ch)<br>            N_post = ch;<br>        <span class="hljs-keyword">end</span><br>        apo_vector(N_pre:N_post)  = <span class="hljs-number">1</span>;<br>        <br>    <span class="hljs-keyword">end</span><br>    xdc_apodization (Th, <span class="hljs-number">0</span>, apo_vector);<br>     <span class="hljs-comment">%设置发射延时</span><br>    <span class="hljs-keyword">if</span> ~use_fieldii<br>        emit_delay = fcous_wave_tranmit_delay(probe,emit_idx(<span class="hljs-built_in">j</span>),fcous_depth,<span class="hljs-number">0</span>,c);<br>        xdc_times_focus(Th,<span class="hljs-number">0</span>,emit_delay);<br>    <span class="hljs-keyword">else</span><br>        xdc_center_focus(Th,[emit_loc(<span class="hljs-built_in">j</span>), <span class="hljs-number">0</span>,<span class="hljs-number">0</span>]);<br>        xdc_focus(Th,<span class="hljs-number">0</span>,[emit_loc(<span class="hljs-built_in">j</span>), <span class="hljs-number">0</span>, fcous_depth]);<br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-comment">%接收变迹-使用矩形窗不做变迹；接收全通道</span><br>    xdc_apodization(Rh,<span class="hljs-number">0</span>,<span class="hljs-built_in">ones</span>(<span class="hljs-number">1</span>,N_elements));<br>    <br>    <span class="hljs-comment">%接收不聚焦</span><br>    xdc_center_focus(Rh,[<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>]);<br>    xdc_focus_times(Rh,<span class="hljs-number">0</span>,<span class="hljs-built_in">zeros</span>(<span class="hljs-number">1</span>,N_elements))<br>    <span class="hljs-comment">%获取AD数据</span><br>    [v,t]=calc_scat_multi(Th, Rh, point_position, point_amplitudes);<br>    ADInfo.data(<span class="hljs-number">1</span>:<span class="hljs-built_in">size</span>(v,<span class="hljs-number">1</span>),:,<span class="hljs-built_in">j</span>)=v;<br>    ADInfo.time(<span class="hljs-built_in">j</span>) = t;<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p>这里对于每一条线的发射孔径固定为64，通道并没有全部使用，下图是每一条线对应的发射孔径，注意左右两侧</p>
+<p>​                                                                                 <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_waveorbit_movie.gif" srcset="/img/loading.gif" lazyload>                  </p>
+<p>下图是位于最左侧的线 64通道发射。128通道接收和64通道发射，32通道接收时获取到的的AD数据示意图，从图像可以看出通道打开的位置是正确的。</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavereceive_apo_data.bmp" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>波束合成</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[pt,ele,line,steer_Num] = <span class="hljs-built_in">size</span>(ADInfo.data);<br>is_interp = <span class="hljs-number">1</span>;<br>time = [<span class="hljs-number">0</span>:pt<span class="hljs-number">-1</span>]*dt;<br>z = [<span class="hljs-number">0</span>:pt<span class="hljs-number">-1</span>]*d_y;<br><br><span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span> = <span class="hljs-number">1</span>:emit_line<br>    <span class="hljs-comment">%选取数据</span><br>    data = ADInfo.data(:,:,<span class="hljs-built_in">j</span>);<br>    <span class="hljs-comment">%发射距离，扫描区域点的位置相对于发射位置的距离</span><br>    t_dis = z&#x27;;<br>    <span class="hljs-comment">%接收线点的位置</span><br>    rev_z =  z;<br>    rev_x =   emit_loc(<span class="hljs-built_in">j</span>);<br>    <span class="hljs-comment">%接收距离，扫描区域点的位置相对于阵元坐标距离</span><br>    r_dis = <span class="hljs-built_in">sqrt</span>((rev_x(:)-x_ele).^<span class="hljs-number">2</span>+(rev_z(:)-z_ele).^<span class="hljs-number">2</span>);<br>    <span class="hljs-comment">%延时</span><br>    delay  = (t_dis+r_dis)/c-ADInfo.time(<span class="hljs-built_in">j</span>);<br>    <span class="hljs-comment">%延时转化为点,不做插值，做插值精度更高</span><br>    <span class="hljs-keyword">if</span>(~is_interp)<br>        pt_loc  = <span class="hljs-built_in">round</span>(delay*fs);<br>        pt_loc(pt_loc&lt;<span class="hljs-number">1</span>) = <span class="hljs-number">1</span>;<br>        pt_loc(pt_loc&gt;pt) = pt;<br>        pt_loc = pt_loc+[<span class="hljs-number">0</span>:N_elements<span class="hljs-number">-1</span>]*pt;<br>        RF(:,<span class="hljs-built_in">j</span>) =  sum(data(pt_loc),<span class="hljs-number">2</span>);<br>        <br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-comment">%延时转化为点,插值</span><br>        pt_loc = delay*fs;<br>        pt_loc(pt_loc&lt;<span class="hljs-number">0</span>) = <span class="hljs-number">0</span>;<br>        pt_loc(pt_loc&gt;(pt<span class="hljs-number">-1</span>)) = pt<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">for</span> k = <span class="hljs-number">1</span>:<span class="hljs-built_in">size</span>(delay,<span class="hljs-number">2</span>)<br>            data_r(:,k) = interp1(time*fs,data(:,k)&#x27;,pt_loc(:,k),<span class="hljs-string">&#x27;linear&#x27;</span>);<br>        <span class="hljs-keyword">end</span><br>        RF(:,<span class="hljs-built_in">j</span>) =  sum(data_r,<span class="hljs-number">2</span>);<br>        <br>    <span class="hljs-keyword">end</span><br>    <br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>图像显示</p>
+</li>
+</ol>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs matlab">envelope = <span class="hljs-built_in">abs</span>(hilbert(RF));<br>envelope = db(envelope./<span class="hljs-built_in">max</span>(envelope(:)));<br><span class="hljs-built_in">figure</span>;<br>imagesc(emit_loc*<span class="hljs-number">1e2</span>,z*<span class="hljs-number">1e2</span>,envelope);<br>colormap gray<br>caxis(axis_handle,[<span class="hljs-number">-60</span> <span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>结果为：</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_fcous_wave_middle.png" srcset="/img/loading.gif" lazyload></p>
+<p>这里附上偏转结果:</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_steer_snormal.bmp" srcset="/img/loading.gif" lazyload></p>
+<p>图像上边分别为-15, 0, 15偏转角度波束合成后图像，下侧为坐标系转换后结果，最后经过空间复合：</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_fcous_wave_3.png" srcset="/img/loading.gif" lazyload></p>
+<p>从仿真效果上看靶点位置正确，3 cm 聚焦处比其他位置分辨率及信噪比更好，偏转图像经过空间复合后伪像减少。</p>
+<h2 id="二-凸阵聚焦成像（fcous-imaging-of-curve-array）"><a href="#二-凸阵聚焦成像（fcous-imaging-of-curve-array）" class="headerlink" title="二 凸阵聚焦成像（fcous imaging of curve array）"></a>二 凸阵聚焦成像（fcous imaging of curve array）</h2><p>​        仿真流程与线阵一样，不同地方在于发射延时计算方式与线阵不一样，波束合成中延时的距离计算需要由极坐标系转化为笛卡尔坐标系，坐标系转化后应该如下图：</p>
+<p>​                                                                                     <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_array_xy.bmp" srcset="/img/loading.gif" lazyload style="zoom:67%;" />             </p>
+<p>​        由于凸阵探头发射频率低，成像深度比线阵深，聚焦点位置放在 6 cm，仿真的靶点位置重新定义</p>
+<p>​       按照线阵的流程配置，最终结果为：</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_fcous_wave_middle.png" srcset="/img/loading.gif" lazyload></p>
+<p>偏转图像空间复合后结果：</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_fcous_wave_3.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="三-相控阵聚焦成像（fcous-imaging-of-phase-array）"><a href="#三-相控阵聚焦成像（fcous-imaging-of-phase-array）" class="headerlink" title="三 相控阵聚焦成像（fcous imaging of phase array）"></a>三 相控阵聚焦成像（fcous imaging of phase array）</h2><p>​           相控阵探头发射线永远位于中心线处，聚焦延时修改为</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs matlab">xdc_center_focus(Th,[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]);<br>xdc_focus(Th,<span class="hljs-number">0</span>,[fcous_x,<span class="hljs-number">0</span>,fcous_z]);<span class="hljs-comment">%  每条发射线聚焦处位置</span><br></code></pre></td></tr></table></figure>
+
+<p>​        仿真流程与线阵一样，不同地方在于发射延时计算方式与线阵不一样，波束合成中延时的距离计算需要由极坐标系转化为笛卡尔坐标系，坐标系转化后应该如下图：</p>
+<p>​                                                                <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavephase_array_xy.bmp" srcset="/img/loading.gif" lazyload></p>
+<p>  按照线阵的流程配置，最终结果为：</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavephase_fcous_wave.png" srcset="/img/loading.gif" lazyload></p>
+<p>相控阵一般是对心脏部位进行成像，帧率要求高，在聚焦成像中不会对相控阵进行空间复合。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​        通过Filed II仿真了线阵、凸阵、相控阵的聚焦波束合成，有助于对聚焦成像有个深入的了解。对于超声机器中的偏转成像、线阵梯形成像、凸阵扩展成像都可以通过本文的方法进行相应扩展仿真。</p>
+<p>​        上文仅针对接收动态聚焦做了仿真，对于定点接受聚焦只需要计算一次接受延时就可以确定一条线上所有点的位置。</p>
+<p>​        目前商用机器中的聚焦波束合成方法不断发展，聚焦成像不仅能在焦区获取良好的分辨率，在焦区外也可以获得优异的图像，如西门子的<a target="_blank" rel="noopener" href="https://www.usa.philips.com/healthcare/resources/feature-detail/nsight">nSIGHT</a>、迈瑞的<a target="_blank" rel="noopener" href="https://resona7.com/technology.html">Dynamic Pixel Focusing</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/25/ultrasound-plane-wave-imaging-simulation/">
+                        <span class="hidden-mobile">超声平面波成像仿真（ultrasound plane_wave imaging simulation）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"WDxNJD4Sp2EU0HRpw714b2SA-gzGzoHsz","appKey":"QPAIhElalhua4SUp4ld0myf9","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  
+   <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>  
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("04/09/2022 12:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+    <!-- 统计访问量信息 -->
+	
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+	
+
+    
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
