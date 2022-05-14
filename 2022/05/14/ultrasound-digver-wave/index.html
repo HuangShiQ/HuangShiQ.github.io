@@ -16,22 +16,22 @@
   <meta name="author" content="Harris">
   <meta name="keywords" content="">
   
-    <meta name="description" content="超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）​        上篇文章超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）使用Field II仿真了平面波成像，相比平面波成，聚焦成像像在焦区处分辨率、信噪比更强、通过聚焦穿透力也有提升，平面波发射一次获取">
+    <meta name="description" content="超声扩散波复合成像仿真（ultrasound diverg_wave compound imaging simulation）​        与传统超声聚焦成像相比，扩散波成像通过一次发射可以获取整个感兴趣区域图像信息，优势、劣势与平面波成像一样，与平面波成像不同之处在于扩散波通过虚拟一个发射源进行发射。 ​        本文通过Filed II对线阵、凸阵、相控阵进行扩散波复合成像仿真，通过">
 <meta property="og:type" content="article">
-<meta property="og:title" content="超声聚焦成像仿真（ultrasound fcous imaging simulation）">
-<meta property="og:url" content="https://huangshiq.github.io/2022/05/04/ultrasound-fcous-wave-imaging-simulation/index.html">
+<meta property="og:title" content="ultrasound_digver_wave">
+<meta property="og:url" content="https://huangshiq.github.io/2022/05/14/ultrasound-digver-wave/index.html">
 <meta property="og:site_name" content="MyDiary">
-<meta property="og:description" content="超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）​        上篇文章超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）使用Field II仿真了平面波成像，相比平面波成，聚焦成像像在焦区处分辨率、信噪比更强、通过聚焦穿透力也有提升，平面波发射一次获取">
+<meta property="og:description" content="超声扩散波复合成像仿真（ultrasound diverg_wave compound imaging simulation）​        与传统超声聚焦成像相比，扩散波成像通过一次发射可以获取整个感兴趣区域图像信息，优势、劣势与平面波成像一样，与平面波成像不同之处在于扩散波通过虚拟一个发射源进行发射。 ​        本文通过Filed II对线阵、凸阵、相控阵进行扩散波复合成像仿真，通过">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://huangshiq.github.io/img/Ultrasound/3.png">
-<meta property="article:published_time" content="2022-05-04T03:10:56.000Z">
-<meta property="article:modified_time" content="2022-05-14T07:24:02.197Z">
+<meta property="og:image" content="https://huangshiq.github.io/img/Ultrasound/2.png">
+<meta property="article:published_time" content="2022-05-14T07:37:28.000Z">
+<meta property="article:modified_time" content="2022-05-14T08:43:21.498Z">
 <meta property="article:author" content="Harris">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://huangshiq.github.io/img/Ultrasound/3.png">
+<meta name="twitter:image" content="https://huangshiq.github.io/img/Ultrasound/2.png">
   
   
-  <title>超声聚焦成像仿真（ultrasound fcous imaging simulation） - MyDiary</title>
+  <title>ultrasound_digver_wave - MyDiary</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -177,7 +177,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 1)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="超声聚焦成像仿真（ultrasound fcous imaging simulation）">
+            <span class="h2" id="subtitle" title="ultrasound_digver_wave">
               
             </span>
 
@@ -187,8 +187,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-04 11:10" pubdate>
-        2022年5月4日 上午
+      <time datetime="2022-05-14 15:37" pubdate>
+        2022年5月14日 下午
       </time>
     </span>
   
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      1.4k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      22 分钟
+      12 分钟
     </span>
   
 
@@ -244,74 +244,49 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">超声聚焦成像仿真（ultrasound fcous imaging simulation）</h1>
+            <h1 style="display: none">ultrasound_digver_wave</h1>
             
             <div class="markdown-body">
-              <h1 id="超声B-mode聚焦成像仿真（ultrasound-B-mode-fcous-imaging-simulation）"><a href="#超声B-mode聚焦成像仿真（ultrasound-B-mode-fcous-imaging-simulation）" class="headerlink" title="超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）"></a>超声B mode聚焦成像仿真（ultrasound B  mode fcous imaging simulation）</h1><p>​        上篇文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/h79847164/article/details/124414103?spm=1001.2014.3001.5501">超声平面波复合成像仿真（ultrasound plane_wave compound imaging simulation）</a>使用Field II仿真了平面波成像，相比平面波成，聚焦成像像在焦区处分辨率、信噪比更强、通过聚焦穿透力也有提升，平面波发射一次获取整个深度信息，发射聚焦需要对每一条线上进行聚焦，然后做波束合成获取一条线上的信息，需要发射N次，帧率比平面波慢。</p>
-<p>​        在仿真之前先介绍一下聚焦成像，通过对发射和接收的信号进行延时叠加求和（delay and sum ,DAS）可以达到聚焦成像的目的，聚焦成像中的波束合成包含两种模式，发射聚焦及接收聚焦。</p>
-<p>​        理想上希望对每一个深度上的点进行发射聚焦即发射动态聚焦，由于声波传播需要时间，一副图像的形成包含N*M个点，需要上万次发射，无法实时成像，而实时成像又是我们超声成像（相比CT、MRI成像）最重要的优势，因此发射聚焦往往只在感兴趣区域进行1~3次，超过一个发射焦点就叫多焦点成像。对于有些厂家宣传的十几个以上的焦点只是为了满足招标要求去做的，临床上很少甚至不会使用。</p>
-<p>​        根据互易定理，接收聚焦与发射聚焦的原理是一样的，都是通过对信号进行延时达到聚焦目的。对每一个深度上的点进行聚焦称为接收动态聚焦。如果只对一个感兴趣深度做接收聚焦就叫做接收定点聚焦，目前商业机器上使用的大多是接收动态聚焦。</p>
-<p>​       下图是一副大家经常看到的波束合成的示意图</p>
-<p>​                                                                           <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_waveDynamic-receive-beamforming-for-US-imaging.png" srcset="/img/loading.gif" lazyload>                           </p>
-<p>​       从图上可以看出发射延时控制各阵元发出的波束同时到达聚焦点$(x,z)$，对接收到的回波信号通过计算接收延时进行接收聚焦，获取波束合成信号。</p>
-<p>​        本文仿真的是定点发射聚焦，发射聚焦通过发射延时控制，当然也可以通过Field II自带函数去计算，感兴趣的话可以看下<a target="_blank" rel="noopener" href="https://blog.csdn.net/h79847164/article/details/124286203">超声成像发射声场仿真（Ultrasound Emit Field Simulation）</a>，这篇文章介绍了通过控制发射延时形成不同成像模式的发射声场；对于动态接收聚焦可以通过Field II自带函数去计算，为了更深刻了解波束合成过程，这里使用仿真代码去实现。在此处的仿真中仅仿真正常发射图像，对于偏转仿真仅提供结果以验证结果是否正确，因为偏转图像需要另一种技术空间复合（<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0887217101900186">spatial compound imaging</a>），这里不做过多介绍。</p>
-<p>​      与平面波成像仿真一样， 本文仅对聚焦波束合成进行仿真，不涉及额外处理，如发射变迹、接收变迹等。仿真工具使用 Filed II，探头包括线阵、凸阵、相控阵。</p>
-<p> Field II仿真包含四个部分，</p>
+              <h1 id="超声扩散波复合成像仿真（ultrasound-diverg-wave-compound-imaging-simulation）"><a href="#超声扩散波复合成像仿真（ultrasound-diverg-wave-compound-imaging-simulation）" class="headerlink" title="超声扩散波复合成像仿真（ultrasound diverg_wave compound imaging simulation）"></a>超声扩散波复合成像仿真（ultrasound diverg_wave compound imaging simulation）</h1><p>​        与传统超声聚焦成像相比，扩散波成像通过一次发射可以获取整个感兴趣区域图像信息，优势、劣势与平面波成像一样，与平面波成像不同之处在于扩散波通过虚拟一个发射源进行发射。</p>
+<p>​        本文通过Filed II对线阵、凸阵、相控阵进行扩散波复合成像仿真，通过发射延时控制波阵面的形成，对于发射延时的计算可以看上节<a target="_blank" rel="noopener" href="https://blog.csdn.net/h79847164/article/details/124286203">超声成像发射声场仿真（Ultrasound Emit Field Simulation）</a>。</p>
+<p>​       本文仅对波束合成进行仿真，不涉及额外处理，如发射变迹、接收变迹等。</p>
+<p>Field II仿真包含四个部分，</p>
 <ol>
 <li>参数配置</li>
 <li>AD数据获取</li>
 <li>波束合成</li>
 <li>图像显示</li>
 </ol>
-<p>在线阵中会通过代码对上述部分进行说明，凸阵、相控阵设置基本一样</p>
-<h2 id="一-线阵聚焦成像（fcous-imaging-of-linear-array）"><a href="#一-线阵聚焦成像（fcous-imaging-of-linear-array）" class="headerlink" title="一 线阵聚焦成像（fcous imaging of linear array）"></a>一 线阵聚焦成像（fcous imaging of linear array）</h2><p>​                                                                                              <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_zhengchangfashe.bmp" srcset="/img/loading.gif" lazyload>                    </p>
-<p>​                         </p>
-<p>上图为线阵非偏转发射延时计算，波束合成中的延时由上图中的两部分构成发射延时$Txdelay$和接收延时$Rvdelay$，在仿真过程中需要减去数据采样起始时间$stime$，在实际工程中$stime$可以代表波束合成参数准备时间、声束在透镜中传播时间、校正发射脉冲产生时间等，具体根据工程实现的方式去计算。对于延时时间最终转化为：<br>$$<br>delay &#x3D;Txdelay+Rxdelay-stime<br>$$<br>在Field II中$stime$由下面的函数返回</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-string">[scat, stime]</span> = calc_scat_multi (Th, Rh, points, amplitudes); <br></code></pre></td></tr></table></figure>
+<p>在线阵中会对上述部分进行说明，凸阵、相控阵设置流程一样</p>
+<h2 id="一-线阵扩散波复合成像（diverg-wave-compound-of-linear-array）"><a href="#一-线阵扩散波复合成像（diverg-wave-compound-of-linear-array）" class="headerlink" title="一 线阵扩散波复合成像（diverg wave compound of linear array）"></a>一 线阵扩散波复合成像（diverg wave compound of linear array）</h2><p>​                                                                <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/linear.bmp" srcset="/img/loading.gif" lazyload style="zoom:80%;" /></p>
+<p>上图描绘了三个虚拟发射源位置，当定义了$r、\theta$虚拟发射源（红色点）的位置$(Virx,Virz)$就可以计算出来。发射源位置确定，发射延时即确定。</p>
+<p>波束合成中的延时由上图中的两部分构成发射延时$Txdelay$和接收延时$Rvdelay$，在仿真过程中需要减去数据采样起始时间$stime$，在实际工程中$stime$可以代表波束合成参数准备时间、声束在透镜中传播时间、校正发射脉冲产生时间等，具体根据工程实现的方式去计算。对于延时时间最终转化为：<br>$$<br>delay &#x3D;Txdelay+Rvdelay-stime<br>$$<br>在Field II中$stime$由下面的函数返回</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-string">[scat, stime]</span> = calc_scat_multi (Th1, Th2, points, amplitudes); <br></code></pre></td></tr></table></figure>
 
-<p>$$<br>Txdelay &#x3D; (sqrt((x_n-x_line)^2+(z_n-z_line^2))&#x2F;c &#x3D;  z_n&#x2F;c<br>$$</p>
-<p>$$<br>Rxdelay &#x3D; (sqrt((x_n-x)^2+(z_n-z)^2))&#x2F;c<br>$$</p>
-<p>上述即延时计算公式，$c$为声速，$(x_n,y_n)$为接收线位置，$(x,z)$为阵元坐标位置。</p>
-<p>Field II仿真代码：</p>
-<ol>
-<li><p>参数设置</p>
-</li>
-<li><p>AD数据获取</p>
-<p>这里对于每一条线的发射孔径固定为64，通道并没有全部使用，下图是每一条线对应的发射孔径，注意左右两侧</p>
-<p>​                                                                                 <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_waveorbit_movie.gif" srcset="/img/loading.gif" lazyload>                  </p>
-<p>下图是位于最左侧的线 64通道发射。128通道接收和64通道发射，32通道接收时获取到的的AD数据示意图，从图像可以看出通道打开的位置是正确的。</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavereceive_apo_data.bmp" srcset="/img/loading.gif" lazyload></p>
-</li>
-<li><p>波束合成</p>
-</li>
-<li><p>图像显示</p>
-</li>
-</ol>
-<p>结果为：</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_fcous_wave_middle.png" srcset="/img/loading.gif" lazyload></p>
-<p>这里附上偏转结果:</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_steer_snormal.bmp" srcset="/img/loading.gif" lazyload></p>
-<p>图像上边分别为-15, 0, 15偏转角度波束合成后图像，下侧为坐标系转换后结果，最后经过空间复合：</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavelinear_fcous_wave_3.png" srcset="/img/loading.gif" lazyload></p>
-<p>从仿真效果上看靶点位置正确，3 cm 聚焦处比其他位置分辨率及信噪比更好，偏转图像经过空间复合后伪像减少。</p>
-<h2 id="二-凸阵聚焦成像（fcous-imaging-of-curve-array）"><a href="#二-凸阵聚焦成像（fcous-imaging-of-curve-array）" class="headerlink" title="二 凸阵聚焦成像（fcous imaging of curve array）"></a>二 凸阵聚焦成像（fcous imaging of curve array）</h2><p>​        仿真流程与线阵一样，不同地方在于发射延时计算方式与线阵不一样，波束合成中延时的距离计算需要由极坐标系转化为笛卡尔坐标系，坐标系转化后应该如下图：</p>
-<p>​                                                                                     <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_array_xy.bmp" srcset="/img/loading.gif" lazyload style="zoom:67%;" />             </p>
-<p>​        由于凸阵探头发射频率低，成像深度比线阵深，聚焦点位置放在 6 cm，仿真的靶点位置重新定义</p>
-<p>​       按照线阵的流程配置，最终结果为：</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_fcous_wave_middle.png" srcset="/img/loading.gif" lazyload></p>
-<p>偏转图像空间复合后结果：</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_fcous_wave_3.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="三-相控阵聚焦成像（fcous-imaging-of-phase-array）"><a href="#三-相控阵聚焦成像（fcous-imaging-of-phase-array）" class="headerlink" title="三 相控阵聚焦成像（fcous imaging of phase array）"></a>三 相控阵聚焦成像（fcous imaging of phase array）</h2><p>​           相控阵探头发射线永远位于中心线处，聚焦延时修改为</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs matlab">xdc_center_focus(Th,[<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>]);<br>xdc_focus(Th,<span class="hljs-number">0</span>,[fcous_x,<span class="hljs-number">0</span>,fcous_z]);<span class="hljs-comment">%  每条发射线聚焦处位置</span><br></code></pre></td></tr></table></figure>
-
-<p>​        仿真流程与线阵一样，不同地方在于发射延时计算方式与线阵不一样，波束合成中延时的距离计算需要由极坐标系转化为笛卡尔坐标系，坐标系转化后应该如下图：</p>
-<p>​                                                                <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavephase_array_xy.bmp" srcset="/img/loading.gif" lazyload></p>
-<p>  按照线阵的流程配置，最终结果为：</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavephase_fcous_wave.png" srcset="/img/loading.gif" lazyload></p>
-<p>相控阵一般是对心脏部位进行成像，帧率要求高，在聚焦成像中不会对相控阵进行空间复合。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​        通过Filed II仿真了线阵、凸阵、相控阵的聚焦波束合成，有助于对聚焦成像有个深入的了解。对于超声机器中的偏转成像、线阵梯形成像、凸阵扩展成像都可以通过本文的方法进行相应扩展仿真。</p>
-<p>​        上文仅针对接收动态聚焦做了仿真，对于定点接受聚焦只需要计算一次接受延时就可以确定一条线上所有点的位置。</p>
-<p>​        目前商用机器中的聚焦波束合成方法不断发展，聚焦成像不仅能在焦区获取良好的分辨率，在焦区外也可以获得优异的图像，如西门子的<a target="_blank" rel="noopener" href="https://www.usa.philips.com/healthcare/resources/feature-detail/nsight">nSIGHT</a>、迈瑞的<a target="_blank" rel="noopener" href="https://resona7.com/technology.html">Dynamic Pixel Focusing</a></p>
+<p>$Virx &#x3D; r*sin(-\theta)$</p>
+<p>$Virz &#x3D; -r*cos(\theta)$</p>
+<p>$Txdelay &#x3D;(sqrt((x_n-Virx)^2+(z_n-Virz)^2))&#x2F;c$</p>
+<p>$Rvdelay &#x3D; (sqrt((x_n-x)^2+(z_n-z)^2))&#x2F;c$</p>
+<p>$r &#x3D; 4cm$最终结果为</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/linear_diverging_wave_3.png" srcset="/img/loading.gif" lazyload></p>
+<p>$r &#x3D; 8 cm$最终结果为</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/linear_diverging_wave_3r8.png" srcset="/img/loading.gif" lazyload></p>
+<p>从图像上看$r$不同对于旁瓣有影响</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/linear_diverging_wave_15.png" srcset="/img/loading.gif" lazyload></p>
+<p>从仿真效果上看15个角度旁瓣少，主瓣窄，提高扩散波发射角度数量可以有效提升图像的分辨率和信噪比。</p>
+<h2 id="二-凸阵扩散波复合成像（diverg-wave-compound-of-curve-array）"><a href="#二-凸阵扩散波复合成像（diverg-wave-compound-of-curve-array）" class="headerlink" title="二 凸阵扩散波复合成像（diverg wave compound of curve array）"></a>二 凸阵扩散波复合成像（diverg wave compound of curve array）</h2><p>​        仿真流程与线阵一样，不同地方在于发射延时计算方式与线阵不一样，波束合成中延时的距离计算需要由极坐标系转化为笛卡尔坐标系，坐标系转化后应该如下图：</p>
+<p>​                                        <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavecurve_array_xy.bmp" srcset="/img/loading.gif" lazyload style="zoom:67%;" />             </p>
+<p>​       按照线阵的流程配置，最终结果为</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/curve_diverging_wave_3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/curve_diverging_wave_15.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="三-相控阵扩散波复合成像（diverg-wave-compound-of-phase-array）"><a href="#三-相控阵扩散波复合成像（diverg-wave-compound-of-phase-array）" class="headerlink" title="三 相控阵扩散波复合成像（diverg wave compound of phase array）"></a>三 相控阵扩散波复合成像（diverg wave compound of phase array）</h2><p>相控阵发射设置与线阵完全一样，唯一不同的地方在于接收位置需要由极坐标转化为笛卡尔坐标系。坐标系转化后应该如下图：</p>
+<p>​                                          <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/plane_wavephase_array_xy.bmp" srcset="/img/loading.gif" lazyload style="zoom:80%;" /></p>
+<p>   按照线阵的流程配置，最终结果为：</p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/phase_diverging_wave_3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/digver_wave/phase_diverging_wave_15.png" srcset="/img/loading.gif" lazyload></p>
+<p>​         相控阵仿真效果相比平面波复合效果差，暂时没找到原因，&#x3D;&#x3D;插个眼&#x3D;&#x3D;，有知道的可以说一下。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​        通过Filed II仿真了线阵、凸阵、相控阵的扩散波束合成，从仿真结果上看与平面波一样，增加复合角度数目，可以有效提升图像的分辨率和信噪比。</p>
+<p>​        感兴趣小伙伴的可以对比一下平面波与扩散波成像。</p>
 
             </div>
             <hr>
@@ -332,18 +307,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/14/ultrasound-digver-wave/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ultrasound_digver_wave</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/25/ultrasound-plane-wave-imaging-simulation/">
-                        <span class="hidden-mobile">超声平面波成像仿真（ultrasound plane_wave imaging simulation）</span>
+                      <a href="/2022/05/04/ultrasound-fcous-wave-imaging-simulation/">
+                        <span class="hidden-mobile">超声聚焦成像仿真（ultrasound fcous imaging simulation）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

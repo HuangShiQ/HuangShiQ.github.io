@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://huangshiq.github.io/2022/05/04/ultrasound-fcous-wave-imaging-simulation/</loc>
+    <loc>https://huangshiq.github.io/2022/05/14/ultrasound-digver-wave/</loc>
     
-    <lastmod>2022-05-10</lastmod>
+    <lastmod>2022-05-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,16 @@
   <url>
     <loc>https://huangshiq.github.io/2022/04/25/ultrasound-plane-wave-imaging-simulation/</loc>
     
-    <lastmod>2022-05-04</lastmod>
+    <lastmod>2022-05-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://huangshiq.github.io/2022/05/04/ultrasound-fcous-wave-imaging-simulation/</loc>
+    
+    <lastmod>2022-05-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,7 +49,7 @@
 
   <url>
     <loc>https://huangshiq.github.io/</loc>
-    <lastmod>2022-05-10</lastmod>
+    <lastmod>2022-05-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
