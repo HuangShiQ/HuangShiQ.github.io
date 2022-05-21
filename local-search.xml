@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真</title>
+    <link href="/2022/05/15/ultrasound-gcf/"/>
+    <url>/2022/05/15/ultrasound-gcf/</url>
+    
+    <content type="html"><![CDATA[<h1 id="超声广义相干因子（-Generalized-Coherence-Factor-GCF）波束合成仿真"><a href="#超声广义相干因子（-Generalized-Coherence-Factor-GCF）波束合成仿真" class="headerlink" title="超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真"></a>超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真</h1><p>​       声速不均匀会降低图像的空间分辨率和对比度分辨率，广义相干因子(Generalized Coherence Factor,GCF)是由<a href="https://ieeexplore.ieee.org/document/1182117">Pai-Chi Li</a>教授提出的一种能够校正声速不均性引起的聚焦误差方法。</p><p>​        $GCF &#x3D; \sum_{-M_0&lt;i&lt;M_0}{|p(i)|^2}&#x2F;\sum_{i&#x3D;0}^{N-1}{|p(i)|^2}$</p><p>​       上面就是$GCF$计算公式，分子为低频分量，代表接收通道数据的相干成分，分母为所有频率成分能量,$p$为延时后的通道数据频谱。</p><p>最终波束合成后的数据为：</p><p>​$p(i) &#x3D; GCF*sum_{i&#x3D;0}^{N-1}{s(i)}$</p><p>​$s$为延时后的通道数据。</p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf.png"  /><p>​        上图为GCF波束合成步骤，具体包括四步：</p><ol><li><p>获取延时后通道数据</p></li><li><p>计算每个点的FFT，获取频谱</p></li><li><p>根据公式计算GCF</p></li><li><p>获取校正后波束合成数据</p></li></ol><h2 id="仿真结果"><a href="#仿真结果" class="headerlink" title="仿真结果"></a>仿真结果</h2><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/linear_fcous_wave_das.png"></p><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/linear_fcous_wave_GCF.png"></p><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/NORMAL.bmp"></p><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf.bmp"></p><p>M0  &#x3D; 0时，</p><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf_0.bmp"></p><p>从上图Field II靶点结果看变化并不明显，从CIRS仿体上看对比分辨率以及空间分辨率有所提升，但整幅图像给人一种空洞的感觉，尤其是近场信号被压下去很多，对此可以在近场提高低频分量,结果为：</p><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf_modify.bmp"></p><p>从图像上看有分层，也许可以对GCF系数进行系数校正，近场调整的大一些</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>超声扩散波复合成像仿真（ultrasound diverg_wave compound imaging simulation）</title>
     <link href="/2022/05/14/ultrasound-digver-wave/"/>
     <url>/2022/05/14/ultrasound-digver-wave/</url>
