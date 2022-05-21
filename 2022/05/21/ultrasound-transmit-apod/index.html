@@ -16,22 +16,28 @@
   <meta name="author" content="Harris">
   <meta name="keywords" content="">
   
-    <meta name="description" content="超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真​       声速不均匀会降低图像的空间分辨率和对比度分辨率，广义相干因子(Generalized Coherence Factor,GCF)是由Pai-Chi Li教授提出的一种能够校正声速不均性引起的聚焦误差方法。 ​    												    $GCF &#x3D; \sum_{-">
+    <meta name="description" content="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）​        变迹在超声前端是超声系统的一个重要模块，用于对孔径信号加权，变迹可以有效降低旁瓣，提升对比分辨率。变迹分为发射变迹和接收变迹，接收变迹实现简单，可以在FPGA或软件中实现，这里不做描述。发射变迹实现有两种方法，一种是通过控制电流或电压的幅值进行实现，实现成本高，对于中低端系统来说不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真">
-<meta property="og:url" content="https://huangshiq.github.io/2022/05/15/ultrasound-gcf/index.html">
+<meta property="og:title" content="ultrasound_transmit_apod">
+<meta property="og:url" content="https://huangshiq.github.io/2022/05/21/ultrasound-transmit-apod/index.html">
 <meta property="og:site_name" content="MyDiary">
-<meta property="og:description" content="超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真​       声速不均匀会降低图像的空间分辨率和对比度分辨率，广义相干因子(Generalized Coherence Factor,GCF)是由Pai-Chi Li教授提出的一种能够校正声速不均性引起的聚焦误差方法。 ​    												    $GCF &#x3D; \sum_{-">
+<meta property="og:description" content="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）​        变迹在超声前端是超声系统的一个重要模块，用于对孔径信号加权，变迹可以有效降低旁瓣，提升对比分辨率。变迹分为发射变迹和接收变迹，接收变迹实现简单，可以在FPGA或软件中实现，这里不做描述。发射变迹实现有两种方法，一种是通过控制电流或电压的幅值进行实现，实现成本高，对于中低端系统来说不">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://huangshiq.github.io/img/Ultrasound/gcf.png">
-<meta property="article:published_time" content="2022-05-15T03:08:03.000Z">
-<meta property="article:modified_time" content="2022-05-21T10:31:11.435Z">
+<meta property="og:image" content="f:/MyUltrasound/TransmitApod/img/orbit_movie.gif">
+<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/orbit_movie_apod.gif">
+<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_0_emit_field.png">
+<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_1_emit_field.png">
+<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_0feipianzhuan.png">
+<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_feipianzhuan.png">
+<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_11feipianzhuan.png">
+<meta property="article:published_time" content="2022-05-21T10:36:33.000Z">
+<meta property="article:modified_time" content="2022-05-21T13:58:39.549Z">
 <meta property="article:author" content="Harris">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://huangshiq.github.io/img/Ultrasound/gcf.png">
+<meta name="twitter:image" content="f:/MyUltrasound/TransmitApod/img/orbit_movie.gif">
   
   
-  <title>超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真 - MyDiary</title>
+  <title>ultrasound_transmit_apod - MyDiary</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -177,7 +183,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 1)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真">
+            <span class="h2" id="subtitle" title="ultrasound_transmit_apod">
               
             </span>
 
@@ -187,8 +193,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-15 11:08" pubdate>
-        2022年5月15日 上午
+      <time datetime="2022-05-21 18:36" pubdate>
+        2022年5月21日 晚上
       </time>
     </span>
   
@@ -198,7 +204,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      569 字
+      602 字
     </span>
   
 
@@ -207,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      6 分钟
     </span>
   
 
@@ -244,37 +250,38 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真</h1>
+            <h1 style="display: none">ultrasound_transmit_apod</h1>
             
             <div class="markdown-body">
-              <h1 id="超声广义相干因子（-Generalized-Coherence-Factor-GCF）波束合成仿真"><a href="#超声广义相干因子（-Generalized-Coherence-Factor-GCF）波束合成仿真" class="headerlink" title="超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真"></a>超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真</h1><p>​       声速不均匀会降低图像的空间分辨率和对比度分辨率，广义相干因子(Generalized Coherence Factor,GCF)是由<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/1182117">Pai-Chi Li</a>教授提出的一种能够校正声速不均性引起的聚焦误差方法。</p>
-<p>​    												    $GCF &#x3D; \sum_{-M_0&lt;i&lt;M_0}{|p(i)|^2}&#x2F;\sum_{i&#x3D;0}^{N-1}{|p(i)|^2}$</p>
-<p>​       上面就是$GCF$计算公式，分子为低频分量，代表接收通道数据的相干成分，分母为所有频率成分能量,$p$为延时后的通道数据频谱。</p>
-<p>最终波束合成后的数据为：</p>
-<p>​															$p(i) &#x3D; GCF*sum_{i&#x3D;0}^{N-1}{s(i)}$</p>
-<p>​		$s$为延时后的通道数据。</p>
-<img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf.png" srcset="/img/loading.gif" lazyload  />
-
-<p>​        上图为GCF波束合成步骤，具体包括四步：</p>
-<ol>
-<li><p>获取延时后通道数据</p>
-</li>
-<li><p>计算每个点的FFT，获取频谱</p>
-</li>
-<li><p>根据公式计算GCF</p>
-</li>
-<li><p>获取校正后波束合成数据</p>
-</li>
-</ol>
-<h2 id="仿真结果"><a href="#仿真结果" class="headerlink" title="仿真结果"></a>仿真结果</h2><p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/linear_fcous_wave_das.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/linear_fcous_wave_GCF.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/NORMAL.bmp" srcset="/img/loading.gif" lazyload></p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf.bmp" srcset="/img/loading.gif" lazyload></p>
-<p>M0  &#x3D; 0时，</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf_0.bmp" srcset="/img/loading.gif" lazyload></p>
-<p>从上图Field II靶点结果看变化并不明显，从CIRS仿体上看对比分辨率以及空间分辨率有所提升，但整幅图像给人一种空洞的感觉，尤其是近场信号被压下去很多，对此可以在近场提高低频分量,结果为：</p>
-<p><img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/gcf/gcf_modify.bmp" srcset="/img/loading.gif" lazyload></p>
-<p>从图像上看有分层，也许可以对GCF系数进行系数校正，近场调整的大一些</p>
+              <h1 id="超声系统发射变迹仿真（Ultrasound-Emit-apodization-Simulation）"><a href="#超声系统发射变迹仿真（Ultrasound-Emit-apodization-Simulation）" class="headerlink" title="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）"></a>超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）</h1><p>​        变迹在超声前端是超声系统的一个重要模块，用于对孔径信号加权，变迹可以有效降低旁瓣，提升对比分辨率。变迹分为发射变迹和接收变迹，接收变迹实现简单，可以在FPGA或软件中实现，这里不做描述。发射变迹实现有两种方法，一种是通过控制电流或电压的幅值进行实现，实现成本高，对于中低端系统来说不值得使用这种方法；另一种是通过控制发射波形的占空比进行实现，实现简单。</p>
+<p>​       本文仿真改变占空比实现发射变迹的方式，此处以Field II软件进行线阵发射变迹仿真。</p>
+<h2 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h2><p>1、2.5个发射周期</p>
+<p>2、矩形窗即无发射变迹</p>
+<p>3、hamming窗发射变迹</p>
+<p>其他参数与前面文章中配置相同</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>1、不同阵元位置的发射波形</p>
+<p>​       矩形窗：</p>
+<p>​                                                                                              <img src="F:\MyUltrasound\TransmitApod\img\orbit_movie.gif" srcset="/img/loading.gif" lazyload style="zoom:80%;" /></p>
+<p>​      hamming窗：</p>
+<p>​                                                                                               <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/orbit_movie_apod.gif" srcset="/img/loading.gif" lazyload style="zoom:80%;" /></p>
+<p>2、发射声场</p>
+<p>​      矩形窗：</p>
+<p>​      </p>
+<p>​                                                                          <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_0_emit_field.png" srcset="/img/loading.gif" lazyload></p>
+<p>​      hamming窗：</p>
+<p>​                                                                          <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_1_emit_field.png" srcset="/img/loading.gif" lazyload></p>
+<p>从发射声场看，hamming窗中间能量比无变迹窗能量强，hamming窗两侧抑制也较强</p>
+<p>3、波束合成后结果</p>
+<p>​      矩形窗：</p>
+<p>​                                                                        <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_0feipianzhuan.png" srcset="/img/loading.gif" lazyload></p>
+<p>​      hamming窗： </p>
+<p>​                                                                       <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_feipianzhuan.png" srcset="/img/loading.gif" lazyload>                 </p>
+<p>从波束合成结果看，聚焦处靶点在有发射变迹比无变迹旁瓣伪像明显减少</p>
+<p>​     使用第一种方式实现：</p>
+<p>​                                                                      <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_11feipianzhuan.png" srcset="/img/loading.gif" lazyload></p>
+<p>从波束合成结果看，第一种和第二种实现方式结果基本一致。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​        变迹可以有效降低旁瓣，提升对比分辨率，通过占空比改变发射波形的发射变迹结果与幅度变迹效果基本相差不大。对于变迹中的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Window_function">窗函数</a>可以有多种选择，具体可以根据实际效果进行配置</p>
+<p>​                                                   </p>
 
             </div>
             <hr>
@@ -295,18 +302,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/21/ultrasound-transmit-apod/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ultrasound_transmit_apod</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/14/ultrasound-digver-wave/">
-                        <span class="hidden-mobile">超声扩散波复合成像仿真（ultrasound diverg_wave compound imaging simulation）</span>
+                      <a href="/2022/05/15/ultrasound-gcf/">
+                        <span class="hidden-mobile">超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

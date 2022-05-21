@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>ultrasound_transmit_apod</title>
+    <link href="/2022/05/21/ultrasound-transmit-apod/"/>
+    <url>/2022/05/21/ultrasound-transmit-apod/</url>
+    
+    <content type="html"><![CDATA[<h1 id="超声系统发射变迹仿真（Ultrasound-Emit-apodization-Simulation）"><a href="#超声系统发射变迹仿真（Ultrasound-Emit-apodization-Simulation）" class="headerlink" title="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）"></a>超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）</h1><p>​        变迹在超声前端是超声系统的一个重要模块，用于对孔径信号加权，变迹可以有效降低旁瓣，提升对比分辨率。变迹分为发射变迹和接收变迹，接收变迹实现简单，可以在FPGA或软件中实现，这里不做描述。发射变迹实现有两种方法，一种是通过控制电流或电压的幅值进行实现，实现成本高，对于中低端系统来说不值得使用这种方法；另一种是通过控制发射波形的占空比进行实现，实现简单。</p><p>​       本文仿真改变占空比实现发射变迹的方式，此处以Field II软件进行线阵发射变迹仿真。</p><h2 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h2><p>1、2.5个发射周期</p><p>2、矩形窗即无发射变迹</p><p>3、hamming窗发射变迹</p><p>其他参数与前面文章中配置相同</p><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>1、不同阵元位置的发射波形</p><p>​       矩形窗：</p><p>​                                                                                              <img src="F:\MyUltrasound\TransmitApod\img\orbit_movie.gif" style="zoom:80%;" /></p><p>​      hamming窗：</p><p>​                                                                                               <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/orbit_movie_apod.gif" style="zoom:80%;" /></p><p>2、发射声场</p><p>​      矩形窗：</p><p>​      </p><p>​                                                                          <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_0_emit_field.png"></p><p>​      hamming窗：</p><p>​                                                                          <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_1_emit_field.png"></p><p>从发射声场看，hamming窗中间能量比无变迹窗能量强，hamming窗两侧抑制也较强</p><p>3、波束合成后结果</p><p>​      矩形窗：</p><p>​                                                                        <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_0feipianzhuan.png"></p><p>​      hamming窗： </p><p>​                                                                       <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_feipianzhuan.png">                 </p><p>从波束合成结果看，聚焦处靶点在有发射变迹比无变迹旁瓣伪像明显减少</p><p>​     使用第一种方式实现：</p><p>​                                                                      <img src="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_11feipianzhuan.png"></p><p>从波束合成结果看，第一种和第二种实现方式结果基本一致。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​        变迹可以有效降低旁瓣，提升对比分辨率，通过占空比改变发射波形的发射变迹结果与幅度变迹效果基本相差不大。对于变迹中的<a href="https://en.wikipedia.org/wiki/Window_function">窗函数</a>可以有多种选择，具体可以根据实际效果进行配置</p><p>​                                                   </p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>超声广义相干因子（ Generalized Coherence Factor,GCF）波束合成仿真</title>
     <link href="/2022/05/15/ultrasound-gcf/"/>
     <url>/2022/05/15/ultrasound-gcf/</url>
