@@ -18,26 +18,20 @@
   
     <meta name="description" content="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）​        变迹在超声前端是超声系统的一个重要模块，用于对孔径信号加权，变迹可以有效降低旁瓣，提升对比分辨率。变迹分为发射变迹和接收变迹，接收变迹实现简单，可以在FPGA或软件中实现，这里不做描述。发射变迹实现有两种方法，一种是通过控制电流或电压的幅值进行实现，实现成本高，对于中低端系统来说不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ultrasound_transmit_apod">
+<meta property="og:title" content="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）">
 <meta property="og:url" content="https://huangshiq.github.io/2022/05/21/ultrasound-transmit-apod/index.html">
 <meta property="og:site_name" content="MyDiary">
 <meta property="og:description" content="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）​        变迹在超声前端是超声系统的一个重要模块，用于对孔径信号加权，变迹可以有效降低旁瓣，提升对比分辨率。变迹分为发射变迹和接收变迹，接收变迹实现简单，可以在FPGA或软件中实现，这里不做描述。发射变迹实现有两种方法，一种是通过控制电流或电压的幅值进行实现，实现成本高，对于中低端系统来说不">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="f:/MyUltrasound/TransmitApod/img/orbit_movie.gif">
-<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/orbit_movie_apod.gif">
-<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_0_emit_field.png">
-<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_1_emit_field.png">
-<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_0feipianzhuan.png">
-<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_feipianzhuan.png">
-<meta property="og:image" content="https://harris.oss-cn-shanghai.aliyuncs.com/img/Ultrasound_beamform/transmitapod/linear_fcous_wave_11feipianzhuan.png">
+<meta property="og:image" content="https://huangshiq.github.io/img/Ultrasound/4.png">
 <meta property="article:published_time" content="2022-05-21T10:36:33.000Z">
-<meta property="article:modified_time" content="2022-05-21T13:58:39.549Z">
+<meta property="article:modified_time" content="2022-05-21T14:00:49.904Z">
 <meta property="article:author" content="Harris">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="f:/MyUltrasound/TransmitApod/img/orbit_movie.gif">
+<meta name="twitter:image" content="https://huangshiq.github.io/img/Ultrasound/4.png">
   
   
-  <title>ultrasound_transmit_apod - MyDiary</title>
+  <title>超声系统发射变迹仿真（Ultrasound Emit apodization Simulation） - MyDiary</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -183,7 +177,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 1)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ultrasound_transmit_apod">
+            <span class="h2" id="subtitle" title="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）">
               
             </span>
 
@@ -250,7 +244,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ultrasound_transmit_apod</h1>
+            <h1 style="display: none">超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）</h1>
             
             <div class="markdown-body">
               <h1 id="超声系统发射变迹仿真（Ultrasound-Emit-apodization-Simulation）"><a href="#超声系统发射变迹仿真（Ultrasound-Emit-apodization-Simulation）" class="headerlink" title="超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）"></a>超声系统发射变迹仿真（Ultrasound Emit apodization Simulation）</h1><p>​        变迹在超声前端是超声系统的一个重要模块，用于对孔径信号加权，变迹可以有效降低旁瓣，提升对比分辨率。变迹分为发射变迹和接收变迹，接收变迹实现简单，可以在FPGA或软件中实现，这里不做描述。发射变迹实现有两种方法，一种是通过控制电流或电压的幅值进行实现，实现成本高，对于中低端系统来说不值得使用这种方法；另一种是通过控制发射波形的占空比进行实现，实现简单。</p>
